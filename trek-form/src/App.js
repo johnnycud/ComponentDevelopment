@@ -25,15 +25,32 @@ import React from 'react';
       render() {
           return (
             <tr >
-              {/* TODO */}                   
-            </tr>
+              <td>
+                 { this.props.fan.name }
+              </td>
+              <td>
+                 {this.props.fan.fan-name }
+              </td>
+              <td>
+                   {this.props.fan.phone_number}
+              </td>
+              <td>
+                 <input type="button" className="btn btn-primary" value="Change"/>
+              </td>  
+              <td>
+                 <input type="button" className="btn btn-danger" value="Erase"/>
+              </td>                      
+          </tr>
             ) ;
         }
     }
 
     class FanList extends React.Component {
       render() {
-          var fanRows = null ;  // TODO
+          var fanRows = this.props.fans.map(
+            function(c) {
+                 return <Fan key={c.phone_number} fan={c} />
+            });
           return (
               <tbody >
                   {fanRows}
