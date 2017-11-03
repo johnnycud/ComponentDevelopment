@@ -53,7 +53,7 @@ import React from 'react';
     class BloggList extends React.Component {
        render() {
         var items = this.props.posts.map(function(post,index) {
-          return <NewsItem key={index} post={post} /> ;
+          return <BloggItem key={index} post={post} /> ;
       } );
    return (
      <div>
@@ -72,7 +72,7 @@ import React from 'react';
                <div className="page-header">
                       <h1>Bloggs</h1>
                       <BloggList posts={this.props.posts}  />       {/* TODO - incomplete */}
-                      <Form />
+                      <BloggForm />
                </div>
                  </div>
                 </div>
