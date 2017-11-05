@@ -43,7 +43,7 @@ class SelectSite extends React.Component {
 class FilteredSiteList extends React.Component {
     render() {
         var displayedSites = this.props.sites.map(function(site) {
-          return <StarTrek key={sites.id} site={site } /> ;
+          return <StarTrek key={AllSites.id} site={site } /> ;
         }) ;
         return (
                 <div className="col-md-10">
