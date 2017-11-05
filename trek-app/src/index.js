@@ -1,7 +1,10 @@
-import './node_modules/bootstrap/dist/css/bootstrap.css';
+//import './node_modules/bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StarTrek from './App';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import Phones from './Data';
+
 
 
 var startreks = [
@@ -11,7 +14,9 @@ var startreks = [
     {name: 'Voyager', url:'http://memory-alpha.wikia.com/wiki/Star_Trek:_Voyager'},
     {name: 'Enterprise', url:'http://memory-alpha.wikia.com/wiki/Star_Trek:_Enterprise'},
     {name: 'Discovery', url:'http://memory-alpha.wikia.com/wiki/Star_Trek:_Discovery'}];
-    var type = 'Star Trek Generations';
-    ReactDOM.render(
-    <StarTrek treckies={startreks} type={type}/>,
-    document.getElementById('mount-point'))
+    
+var type = 'Star Trek Generations';
+
+ReactDOM.render(
+    <StarTrek sites={startreks} type={type}/>,
+     document.getElementById('mount-point'))

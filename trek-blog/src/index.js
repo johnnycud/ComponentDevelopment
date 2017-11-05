@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HackerApp from './App';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
+//import '~node_modules/bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 var posts = [
          {   title : 'Who is the best star trek captain?',
