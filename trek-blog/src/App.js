@@ -1,84 +1,100 @@
 import React from 'react';
+import _ from 'lodash';
+import api from './test/stubAPI';
 
-    class BloggForm extends React.Component {
-      render() {
-        return (
-           <form style={{marginTop: '30px'}}>
-              <h3>Add a new Blogg</h3>
+class Form extends React.Component {
+    state = { title: '', link: ''};
 
-              <div className="form-group">
-                <input type="text"
-                  className="form-control"
-                  placeholder="Title"></input>
-              </div>
-              <div className="form-group">
-                <input type="text"
-                className="form-control"
-                placeholder="Link"></input>
-              </div>
-              <button type="submit" className="btn btn-primary">Post</button>
-            </form>
-            );
-        }
-    }
-
-    class BloggItem extends React.Component {
-      render() {
-          var divStyle = {
-               fontSize: '20px', 
-               marginLeft: '10px' 
-              };
-          var cursor = { cursor: 'pointer' } ;
-          var line ;
-          if (this.props.post.link ) {
-             line = <a href={this.props.post.link} >
-            {            this.props.post.title} </a> ;
-          } else {
-             line = <span>{this.props.post.title} </span> ;
-          }
-        return (
-            <div >
-              <span className="glyphicon glyphicon-thumbs-up"
-                    style={cursor} />
-              {this.props.post.upvotes}
-              <span style={divStyle} >{line}<span>
-                  <a href={'#/posts/' + this.props.post.id }>Blogg Comments</a>
-                </span>
-              </span>
-            </div>  
-            );
+    render() {
+       return (
+         <form style={{marginTop: '30px'}}>
+            <h3>Add a new blogg</h3>
+            <div className="form-group">
+              <input type="text"
+                className="form-control" placeholder="Title"
+                value={this.state.title} ></input>
+            </div>
+            <div className="form-group">
+              <input type="text"
+                 className="form-control" placeholder="Link"
+                 value={this.state.link} ></input>
+            </div>
+            <button type="submit" className="btn btn-primary" >Blogg</button>
+          </form>
+        );
       }
+   };
+
+class NewsItem extends React.Component {
+  handleVote = () =>  this.props.upvoteHandler(this.props.blogg.id);
+
+  render() {
+      let lineStyle = {
+           fontSize: '20px', marginLeft: '10px'  };
+      let cursor = { cursor: 'pointer' } ;
+      let line ;
+      if (this.props.blogg.link ) {
+         line = <a href={this.props.blogg.link} >
+                      {this.props.blogg.title} </a> ;
+      } else {
+         line = <span>{this.props.blogg.title} </span> ;
+      }
+      return (
+        <div >
+          <span className="glyphicon glyphicon-thumbs-up" 
+              style={cursor} 
+              onClick={this.handleVote} ></span>
+          {this.props.blogg.upvotes}
+          <span style={lineStyle} >{line}<span>
+              <a href={'#/bloggs/' + this.props.blogg.id }>Comments</a>
+            </span>
+          </span>
+        </div>  
+        );
     }
+}
 
-    class BloggList extends React.Component {
-       render() {
-        var items = this.props.posts.map(function(post,index) {
-          return <BloggItem key={index} post={post} /> ;
-      } );
-   return (
-     <div>
-           {items}
-           </div>
-     );
- }
-}  
+class NewsList extends React.Component {
+  render() {
+      let items = this.props.bloggs.map((blogg,index) => {
+         return <NewsItem key={index} 
+                          blogg={blogg} 
+                          upvoteHandler={this.props.upvoteHandler}  /> ;
+        } )
+    return (
+       <div>
+          {items}
+       </div>
+      );
+  } 
+}
 
-    class BloggApp extends React.Component {
-      render() {
-          return (
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-6 col-md-offset-3">
-               <div className="page-header">
-                      <h1>Bloggs</h1>
-                      <BloggList posts={this.props.posts}  />       {/* TODO - incomplete */}
-                      <BloggForm />
-               </div>
-                 </div>
+class Trekblogg extends React.Component {
+  incrementUpvote = (id) => {
+      api.upvote(id) ;
+      this.setState({});
+  };
+
+  render() {
+      let bloggs = _.sortBy(api.getAll(), function(blogg) {
+          return - blogg.upvotes;
+      }
+      );
+      return (
+          <div className="container">
+             <div className="row">
+                <div className="col-md-6 col-md-offset-3">
+                   <div className="page-header">
+                      <h1>Trek Blogg</h1>
+                         <NewsList bloggs={bloggs} 
+                              upvoteHandler={this.incrementUpvote} />
+                         <Form />
+                   </div>
                 </div>
-              </div>
-          );
-      }
-    }
+             </div>
+          </div>
+      );
+  } 
+}
 
-    export default BloggApp;
+export default Trekblogg;

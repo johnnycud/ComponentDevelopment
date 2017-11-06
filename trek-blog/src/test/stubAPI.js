@@ -34,7 +34,56 @@ import _ from 'lodash';
                     username : 'pKline',  
                     comments : [],
                     upvotes : 2
-                }
+                },
+
+                {  id: 5,
+                   title : 'Who is the best star trek captain?',
+                   link : 'https://www.space.com › Entertainment',
+                   username : 'jcudds',
+                   comments : [],
+                   upvotes : 8
+                },
+    
+                {  id:6,
+     
+                   title : 'Discovery a war propaganda',
+    
+                   link : 'http://www.twcenter.net/forums/showthread.php?758701-Star-Trek-	    Discovery-and-Leftist-Propaganda/page5',
+    
+                   username : 'notme',
+    
+                   comments : [],
+    
+                   upvotes : 15
+    
+                },
+    
+                {  id:7,
+     
+                   title : ' Why is Spocks blood copper based if he is half human?',
+    
+                   link : 'https://scifi.stackexchange.com/questions/21996/why-is-spocks-blood-	    copper-based-if-he-is-half-human',
+    
+                   username : 'pbyrne',
+    
+                   comments : [],
+    
+                   upvotes : 13
+    
+                 },
+                 {  id: 8,
+     
+                   title : 'Why are vulcans and Romulans so different',
+    
+                   link : 'https://scifi.stackexchange.com/questions/5578/how-are-vulcans-and-            romulans-different-from-each-other',
+    
+                   username : 'psmith',
+      
+                   comments : [],
+    
+                   upvotes : 8
+                 }
+    
             ] ;
         }
 
@@ -57,7 +106,7 @@ import _ from 'lodash';
         upvote(id) {
             let index = _.findIndex(this.bloggs, 
                 function(blogg) {
-                    return post.id === id;
+                    return blogg.id === id;
                 } );   
             if (index !== -1) {                 
                 this.bloggs[index].upvotes += 1 ;
@@ -66,7 +115,7 @@ import _ from 'lodash';
             return false ;
         }
 
-        getPost(id) {
+        getBlogg(id) {
             let result = null ;
             let index = _.findIndex(this.bloggs, function(blogg) {
                 return blogg.id === id;
@@ -78,7 +127,7 @@ import _ from 'lodash';
         }
 
         addComment(bloggId,c,n) {
-            let blogg = this.getPost(bloggId ) ;
+            let blogg = this.getblogg(bloggId ) ;
             let id = 1 ;
             let last = _.last(blogg.comments) ;
             if (last) {
@@ -89,7 +138,7 @@ import _ from 'lodash';
         }
 
         upvoteComment(bloggId,commentId) {
-            let blogg = this.getPost(bloggId ) ;
+            let blogg = this.getblogg(bloggId ) ;
             let index = _.findIndex(blogg.comments, function(c) {
                 return c.id === commentId;
             } );  
