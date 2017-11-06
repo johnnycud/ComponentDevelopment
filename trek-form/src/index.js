@@ -36,6 +36,6 @@ var contacts = [
   ] ;       
 
 ReactDOM.render(
-  <ContactsApp  contacts={contacts}  />,
+  <FanApp  contacts={contacts}  />,
       document.getElementById('root')
 );

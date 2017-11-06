@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import api from './test/stubAPI';
+import { Link } from 'react-router';
 
 class Form extends React.Component {
     state = { title: '', link: ''};
@@ -46,7 +47,7 @@ class NewsItem extends React.Component {
               onClick={this.handleVote} ></span>
           {this.props.blogg.upvotes}
           <span style={lineStyle} >{line}<span>
-              <a href={'#/bloggs/' + this.props.blogg.id }>Comments</a>
+              <Link to={'#/bloggs/' + this.props.blogg.id }>Comments</Link>
             </span>
           </span>
         </div>  
@@ -81,18 +82,11 @@ class Trekblogg extends React.Component {
       }
       );
       return (
-          <div className="container">
-             <div className="row">
-                <div className="col-md-6 col-md-offset-3">
-                   <div className="page-header">
-                      <h1>Trek Blogg</h1>
-                         <NewsList bloggs={bloggs} 
-                              upvoteHandler={this.incrementUpvote} />
-                         <Form />
-                   </div>
-                </div>
-             </div>
-          </div>
+        <div >
+           <NewsList bloggs={bloggs} 
+                upvoteHandler={this.incrementUpvote} />
+           <Form addHandler={this.addblogg}  />
+      </div>
       );
   } 
 }

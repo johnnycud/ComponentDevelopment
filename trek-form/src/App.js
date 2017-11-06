@@ -1,4 +1,5 @@
 import React from 'react';
+import api from './test/stubAPI' 
 
     class FanForm extends React.Component {
       render() {
@@ -81,6 +82,7 @@ import React from 'react';
 
     class FanApp extends React.Component {
       render() {
+        var fans = api.getAll() ;
           return (
                 <div>
                    <h1>Fan List.</h1>
