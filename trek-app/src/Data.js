@@ -1,4 +1,4 @@
-var AllSites = [ 
+var Sites = [ 
   {
       'age': 0, 
       'id': 'First', 
