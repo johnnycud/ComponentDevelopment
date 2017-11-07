@@ -6,26 +6,26 @@ import _ from 'lodash';
             this.fans = [
                 {
                     'name': 'Piped piper',
-                    'address': '321 mountain view',
-                    'phone_number': '589-120'
+                    'fan_name': 'spock2',
+                    'phone_number': '051-42165'
                 },
 
                 {
-                    'name': 'fan 2',
-                    'address': '23 Main square',
-                    'phone_number': '934-4329'
+                    'name': 'Mary Poppins',
+                    'fan_name': 'bones2',
+                    'phone_number': '051 45135'
                 }, 
 
                 {
-                    'name': 'fan 3',
-                    'address': '4 Lower drewry lane',
-                    'phone_number': '432-4532'
+                    'name': 'Peter Byrne',
+                    'fan_name': 'data1',
+                    'phone_number': '021-451261'
                 },
 
                 {
-                    'name': 'fan 4',
-                    'address': '49 Upper canal rd',
-                    'phone_number': '934-6390'
+                    'name': 'Danny Murphy',
+                    'fan_name': 'Geordi1',
+                    'phone_number': '01-639025'
                 }
             ] ; 
         }
@@ -40,20 +40,20 @@ import _ from 'lodash';
             return this.fans ;
         }
 
-        add(n,a,p) {
+        add(n,f,p) {
             let len = this.fans.length ;
             let newLen = this.fans.push({
-                name: n, address : a, phone_number: p }) ;
+                name: n, fan_name : f, phone_number: p }) ;
             return newLen > len ;
         }
 
-        update(key,n,a,p) {
+        update(key,n,f,p) {
             var index = _.findIndex(this.fans, 
                 (fan) => fan.phone_number === key
             );      
             if (index !== -1) {
                 this.fans.splice(index, 1, 
-                    {name: n, address: a, phone_number: p});
+                    {name: n, fan_name: f, phone_number: p});
                 return true ;
             }
             return false ;
