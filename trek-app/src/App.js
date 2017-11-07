@@ -47,34 +47,13 @@ class SelectSite extends React.Component {
              </li>
             ) ;
       }
-  } ;
-  class StarTrek extends React.Component{
-  render(){
-      var showlist = this.props.site.map(function(fWork, index){
-          return(
-              <li key={index}>
-                  <a href={fWork.url}>
-                      {fWork.name} </a>
-              </li>);
-      
-      });
-      return (
-          <div>
-              <h1>{this.props.type}</h1>
-              <ul>
-                  {showlist}
-              </ul>
-          </div>
-      );
-
-  }
-}
-
+    };
+  
 
 class FilteredSiteList extends React.Component {
     render() {
         var displayedSites = this.props.sites.map(function(site) {
-          return <StarTrek key={site.id} site={site } /> ;
+          return <SiteItem key={site.id} site={site } /> ;
         }) ;
         return (
                 <div className="col-md-10">

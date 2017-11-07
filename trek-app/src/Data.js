@@ -45,4 +45,6 @@ var Sites = [
       'name': 'Discovery', 
       'snippet': 'Presently running on NetFlix and ABC.'
   }
+  
 ]
+export default Sites;

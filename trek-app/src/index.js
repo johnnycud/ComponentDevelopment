@@ -40,4 +40,4 @@ var sites = [
     {name: 'Enterprise', url:'http://memory-alpha.wikia.com/wiki/Star_Trek:_Enterprise'},
     {name: 'Discovery', url:'http://memory-alpha.wikia.com/wiki/Star_Trek:_Discovery'}];
 
-var type = 'Star Trek Sites';
+export default sites;
