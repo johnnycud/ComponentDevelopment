@@ -3,7 +3,7 @@ import api from './test/stubAPI'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import buttons from './config/buttonsConfig'
 
-   /* class FanForm extends React.Component {
+    class FanForm extends React.Component {
       render() {
         return (
           <tr>
@@ -22,7 +22,7 @@ import buttons from './config/buttonsConfig'
           </tr>
           )
       }
-    }*/
+    }
 
     class Fan extends React.Component {
       state = {
